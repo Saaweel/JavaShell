@@ -14,11 +14,10 @@ public class Console {
 		DirectoryStream<Path> stream = Files.newDirectoryStream(path);
 
 		for (Path file : stream) {
-			if (Files.isDirectory(file)) {
+			if (Files.isDirectory(file))
 				recursiveDelete(file);
-			} else {
+			else
 				Files.delete(file);
-			}
 		}
 
 		Files.delete(path);
@@ -46,11 +45,10 @@ public class Console {
 					DirectoryStream<Path> stream = Files.newDirectoryStream(dir);
 
 					for (Path file : stream) {
-						if (Files.isDirectory(file)) {
+						if (Files.isDirectory(file))
 							System.out.println(Color.BLUE + file.getFileName() + Color.RESET);
-						} else {
+						else
 							System.out.println(file.getFileName());
-						}
 					}
 				} catch (Exception e) {
 					System.out.println(Color.RED + "Error: " + e.getMessage() + Color.RESET);
@@ -173,16 +171,15 @@ public class Console {
 	public void touch(String name){
 		Path file = Paths.get(name);
 
-		if (Files.exists(file)) {
+		if (Files.exists(file))
 			System.out.println(Color.RED + "Error: " + name + " ya existe" + Color.RESET);
-		} else {
+		else
 			try {
 				Files.createFile(file);
 				System.out.println(Color.GREEN + "Archivo creado" + Color.RESET);
 			} catch (Exception e) {
 				System.out.println(Color.RED + "Error: " + e.getMessage() + Color.RESET);
 			}
-		}
 	}
 
 	public void grep(String pattern, String path, String option){
